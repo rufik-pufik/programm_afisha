@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Афиша</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <section class="hero">
+        <div class="hero__pin">
+          <header class="header">
+            <div class="header__logos">
+              <img
+                class="header__logo header__logo--leningrad"
+                src="assets/images/icons/leningrad-centr.svg"
+                alt="Ленинград Центр"
+              />
+              <img
+                class="header__logo header__logo--art"
+                src="assets/images/icons/art-masters.svg"
+                alt="Art Masters"
+              />
+            </div>
+            <button class="header__menu" type="button" aria-label="Меню"></button>
+          </header>
+          <div class="hero__photo">
+            <img
+              class="hero__img"
+              src="assets/images/hero/first-photo.png"
+              alt=""
+            />
+            <span class="hero__dot"></span>
+          </div>
+        </div>
+      </section>
+      <section class="intro">
+        <p class="intro__row indent-0">
+          <span class="intro__big">Есть</span>
+          <span class="intro__small">новелла</span>
+        </p>
+        <p class="intro__row indent-15">
+          <span class="intro__big">О чем</span>
+          <span class="intro__small">2026</span>
+        </p>
+        <p class="intro__row intro__row--end indent-30">
+          <span class="intro__big">Помолчать<span class="intro__q">?</span></span>
+        </p>
+        <div class="intro__line">
+          <span class="intro__line-label">О чем</span>
+        </div>
+        <p class="intro__text indent-30">
+          Молчание способно как уничтожить, так и возродить. Вопрос только в
+          том: есть ли о чем помолчать?
+        </p>
+      </section>
+      <section class="facts">
+        <div class="facts__track">
+          <div class="facts__col">
+            <img
+              class="facts__img"
+              src="assets/images/slider/slider-1/card-1-top.png"
+              alt=""
+            />
+            <div class="facts__info">
+              <p class="facts__label">Жанр:</p>
+              <p class="facts__value">Современная драма</p>
+              <p class="facts__label">Место проведения:</p>
+              <p class="facts__value">Ленинград Центр</p>
+              <p class="facts__label">Премьера:</p>
+              <p class="facts__value">20 сентября 2026</p>
+            </div>
+          </div>
+          <div class="facts__col">
+            <img
+              class="facts__img"
+              src="assets/images/slider/slider-1/card-2-top.png"
+              alt=""
+            />
+            <img
+              class="facts__img"
+              src="assets/images/slider/slider-1/card-2-bottom.png"
+              alt=""
+            />
+          </div>
+          <div class="facts__col">
+            <img
+              class="facts__img"
+              src="assets/images/slider/slider-1/card-3-top.png"
+              alt=""
+            />
+            <img
+              class="facts__img"
+              src="assets/images/slider/slider-1/card-3-bottom.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </section>
+      <section class="rehearsal">
+        <div class="rehearsal__line">
+          <span class="rehearsal__title">Репетиция</span>
+        </div>
+        <div class="rehearsal__viewport js-rehearsal">
+          <div class="rehearsal__track">
+            <div class="rehearsal__card is-main">
+              <img src="assets/images/slider/slider-2/card-1.png" alt="" />
+            </div>
+            <div class="rehearsal__card is-next">
+              <img src="assets/images/slider/slider-2/card-2.png" alt="" />
+            </div>
+            <div class="rehearsal__card">
+              <img src="assets/images/slider/slider-2/card-3.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/sliders.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

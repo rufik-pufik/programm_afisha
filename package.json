@@ -1,0 +1,14 @@
+{
+  "name": "afisha",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sass --watch scss/style.scss:css/style.css --no-source-map",
+    "build": "sass scss/style.scss:css/style.css --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.79.0"
+  },
+  "dependencies": {
+    "puppeteer-core": "^25.11.0"
+  }
+}
