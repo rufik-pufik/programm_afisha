@@ -1,0 +1,41 @@
+.hero {
+  height: 300vh;
+}
+
+.hero__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $color-black;
+}
+
+.hero__photo {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 40% 28%;
+}
+
+.hero__dot {
+  position: absolute;
+  left: 50.5%;
+  top: 45%;
+  width: 9.2%;
+  aspect-ratio: 1 / 1;
+  background: $color-red;
+  border-radius: 50%;
+  z-index: $z-dot;
+  transform: translate(-50%, -50%) scale(1);
+  transform-origin: center center;
+  pointer-events: none;
+  will-change: transform;
+}

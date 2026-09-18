@@ -1,0 +1,70 @@
+.rehearsal {
+  padding-bottom: 48px;
+}
+
+.rehearsal__line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-left: $side;
+  padding-right: $side;
+}
+
+.rehearsal__line::before {
+  content: "";
+  width: 48px;
+  height: 2px;
+  background: $color-red;
+  flex-shrink: 0;
+}
+
+.rehearsal__line::after {
+  content: "";
+  flex-grow: 1;
+  height: 2px;
+  background: $color-red;
+}
+
+.rehearsal__title {
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rehearsal__viewport {
+  overflow: hidden;
+  padding-left: $side;
+}
+
+.rehearsal__track {
+  display: flex;
+  align-items: flex-start;
+}
+
+.rehearsal__card {
+  width: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.45s ease;
+}
+
+.rehearsal__card.is-main {
+  width: 265px;
+}
+
+.rehearsal__card.is-next {
+  width: 99px;
+  margin-left: 6px;
+  cursor: pointer;
+}
+
+.rehearsal__card img {
+  width: 100%;
+  aspect-ratio: 534 / 756;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}

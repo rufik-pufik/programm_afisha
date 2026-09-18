@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-black;
+  padding: 12px $side;
+  flex-shrink: 0;
+  position: relative;
+  z-index: $z-header;
+}
+
+.header__logos {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header__logo {
+  display: block;
+  width: auto;
+}
+
+.header__logo--leningrad {
+  height: 20px;
+}
+
+.header__logo--art {
+  height: 26px;
+}
+
+.header__menu {
+  width: 22px;
+  height: 14px;
+  flex-shrink: 0;
+  position: relative;
+  appearance: none;
+  background: linear-gradient($color-white, $color-white) 50% / 100% 2px no-repeat;
+}
+
+.header__menu::before,
+.header__menu::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: $color-white;
+}
+
+.header__menu::before {
+  top: 0;
+}
+
+.header__menu::after {
+  bottom: 0;
+}

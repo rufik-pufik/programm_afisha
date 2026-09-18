@@ -1,0 +1,27 @@
+.page {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+.container {
+  padding-left: $side;
+  padding-right: $side;
+}
+
+.indent-0 {
+  padding-left: $side;
+  padding-right: $side;
+}
+
+.indent-15 {
+  padding-left: 15%;
+  padding-right: $side;
+}
+
+.indent-30 {
+  padding-left: 30%;
+  padding-right: $side;
+}

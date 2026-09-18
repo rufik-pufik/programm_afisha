@@ -1,0 +1,42 @@
+.slider {
+  overflow: hidden;
+  position: relative;
+  z-index: $z-slider;
+}
+
+.slider-overflow {
+  overflow: visible;
+}
+
+.slider .swiper-slide {
+  height: auto;
+}
+
+.slider .swiper-pagination {
+  position: relative;
+  margin-top: 12px;
+}
+
+.slider .swiper-pagination-bullet {
+  background: $color-text;
+  opacity: 0.25;
+}
+
+.slider .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.slider-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.slider-prev,
+.slider-next {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

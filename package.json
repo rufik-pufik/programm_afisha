@@ -7,8 +7,5 @@
   },
   "devDependencies": {
     "sass": "^1.79.0"
-  },
-  "dependencies": {
-    "puppeteer-core": "^25.11.0"
   }
 }
