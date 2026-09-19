@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: $color-black;
-  padding: 12px $side;
+  background: $color-nav;
+  padding: 16px $side;
   flex-shrink: 0;
   position: relative;
   z-index: $z-header;

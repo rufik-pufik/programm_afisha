@@ -1,22 +1,25 @@
 .intro {
   background: $color-bg;
-  padding: 40px 0 48px;
+  padding: 32px 0 48px;
+  overflow-x: hidden;
 }
 
 .intro__row {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   gap: 8px;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
+  max-width: 100%;
 }
 
 .intro__row--end {
+  padding-left: $side;
+  padding-right: $side;
   justify-content: flex-end;
-  margin-bottom: 0;
 }
 
 .intro__big {
-  font-size: 34px;
+  font-size: clamp(24px, 8.5vw, 34px);
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -24,12 +27,13 @@
 }
 
 .intro__small {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 1;
   color: $color-muted;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  padding-top: 4px;
 }
 
 .intro__q {
@@ -39,14 +43,14 @@
 .intro__line {
   display: flex;
   align-items: center;
-  margin: 36px 0 28px;
+  margin: 28px 0 22px;
   padding-left: $side;
   padding-right: $side;
 }
 
 .intro__line::before {
   content: "";
-  width: 48px;
+  width: 32px;
   height: 2px;
   background: $color-red;
   flex-shrink: 0;
@@ -72,5 +76,6 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.35;
-  padding-right: 32px;
+  padding-left: 27%;
+  padding-right: $side;
 }

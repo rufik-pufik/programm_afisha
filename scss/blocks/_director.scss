@@ -1,18 +1,18 @@
 .director {
-  padding-bottom: 72px;
+  padding-bottom: $section-gap;
 }
 
 .director__line {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   padding-left: $side;
   padding-right: $side;
 }
 
 .director__line::before {
   content: "";
-  width: 48px;
+  width: 32px;
   height: 2px;
   background: $color-red;
   flex-shrink: 0;
@@ -46,7 +46,7 @@
 }
 
 .director__meta {
-  padding: 16px 20px 0 48px;
+  padding: 14px $side 0 20%;
 }
 
 .director__name {

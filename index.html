@@ -4,12 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Афиша</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -45,7 +39,7 @@
           </div>
         </div>
       </section>
-      <section class="intro">
+      <section class="intro" id="about">
         <p class="intro__row indent-0">
           <span class="intro__big">Есть</span>
           <span class="intro__small">новелла</span>
@@ -54,18 +48,20 @@
           <span class="intro__big">О чем</span>
           <span class="intro__small">2026</span>
         </p>
-        <p class="intro__row intro__row--end indent-30">
+        <p class="intro__row intro__row--end">
           <span class="intro__big">Помолчать<span class="intro__q">?</span></span>
         </p>
-        <div class="intro__line">
+        <div class="intro__line js-line">
           <span class="intro__line-label">О чем</span>
         </div>
-        <p class="intro__text indent-30">
-          Молчание способно как уничтожить, так и возродить. Вопрос только в
-          том: есть ли о чем помолчать?
+        <p class="intro__text">
+          Молчание способно как<br />
+          уничтожить, так и возродить.<br />
+          Вопрос только в том: есть ли<br />
+          о чем помолчать?
         </p>
       </section>
-      <section class="facts">
+      <section class="facts js-hscroll">
         <div class="facts__track">
           <div class="facts__col">
             <img
@@ -108,29 +104,29 @@
           </div>
         </div>
       </section>
-      <section class="rehearsal">
-        <div class="rehearsal__line">
+      <section class="rehearsal" id="rehearsal">
+        <div class="rehearsal__line js-line">
           <span class="rehearsal__title">Репетиция</span>
         </div>
         <div class="rehearsal__viewport js-rehearsal">
           <div class="rehearsal__track">
-            <div class="rehearsal__card is-main">
+            <div class="rehearsal__card is-main is-top" data-row="top">
               <img src="assets/images/slider/slider-2/card-1.png" alt="" />
             </div>
-            <div class="rehearsal__card is-next">
+            <div class="rehearsal__card is-top" data-row="top">
               <img src="assets/images/slider/slider-2/card-2.png" alt="" />
             </div>
-            <div class="rehearsal__card">
+            <div class="rehearsal__card is-bot" data-row="bot">
               <img src="assets/images/slider/slider-2/card-3.png" alt="" />
             </div>
           </div>
         </div>
       </section>
-      <section class="crew">
-        <div class="crew__line">
+      <section class="crew" id="crew">
+        <div class="crew__line js-line">
           <span class="crew__title">Кто работал над новеллой</span>
         </div>
-        <div class="crew__slider">
+        <div class="crew__slider js-hscroll">
           <div class="crew__track">
             <article class="crew__slide">
               <img
@@ -141,7 +137,8 @@
               <div class="crew__meta">
                 <p class="crew__name">Филипова Юлия | Сценограф</p>
                 <p class="crew__text">
-                  Разработала сценографию и визуальное пространство постановки
+                  Разработала сценографию<br />
+                  и визуальное пространство постановки
                 </p>
               </div>
             </article>
@@ -266,49 +263,57 @@
           </div>
         </div>
       </section>
-      <section class="actors">
-        <div class="actors__line">
+      <section class="actors" id="actors">
+        <div class="actors__line js-line">
           <span class="actors__title">Актеры</span>
         </div>
-        <div class="actors__slider">
+        <div class="actors__slider js-actors">
           <div class="actors__track">
-            <article class="actors__slide">
-              <img
-                class="actors__photo"
-                src="assets/images/slider/slider-4/card-1.png"
-                alt=""
-              />
+            <article class="actors__slide is-main">
+              <div class="actors__frame">
+                <img
+                  class="actors__photo"
+                  src="assets/images/slider/slider-4/card-1.png"
+                  alt=""
+                />
+              </div>
               <p class="actors__name">Александр Ветров</p>
             </article>
             <article class="actors__slide">
-              <img
-                class="actors__photo"
-                src="assets/images/slider/slider-4/card-2.png"
-                alt=""
-              />
+              <div class="actors__frame">
+                <img
+                  class="actors__photo"
+                  src="assets/images/slider/slider-4/card-2.png"
+                  alt=""
+                />
+              </div>
               <p class="actors__name">Никита Савельев</p>
             </article>
             <article class="actors__slide">
-              <img
-                class="actors__photo"
-                src="assets/images/slider/slider-4/grey-photo.png"
-                alt=""
-              />
+              <div class="actors__frame">
+                <img
+                  class="actors__photo"
+                  src="assets/images/slider/slider-4/grey-photo.png"
+                  alt=""
+                />
+              </div>
               <p class="actors__name">Максим Громов</p>
             </article>
             <article class="actors__slide">
-              <img
-                class="actors__photo"
-                src="assets/images/slider/slider-4/grey-photo.png"
-                alt=""
-              />
+              <div class="actors__frame">
+                <img
+                  class="actors__photo"
+                  src="assets/images/slider/slider-4/grey-photo.png"
+                  alt=""
+                />
+              </div>
               <p class="actors__name">Кирилл Данилов</p>
             </article>
           </div>
         </div>
       </section>
-      <section class="director">
-        <div class="director__line">
+      <section class="director" id="director">
+        <div class="director__line js-line">
           <span class="director__title">Слово режиссера</span>
         </div>
         <div class="director__photo-wrap">
@@ -321,15 +326,46 @@
         <div class="director__meta">
           <p class="director__name">Григорий Юдин</p>
           <p class="director__text">
-            Текст режиссёра появится позже. Здесь будет несколько абзацев о
-            замысле новеллы и о том, почему молчание стало её главной темой
+            Текст режиссёра появится позже.<br />
+            Здесь будет несколько абзацев<br />
+            о замысле новеллы и о том, почему<br />
+            молчание стало её главной темой
           </p>
         </div>
       </section>
+      <div class="nav">
+        <div class="nav__head">
+          <div class="header__logos">
+            <img
+              class="header__logo header__logo--leningrad"
+              src="assets/images/icons/leningrad-centr.svg"
+              alt="Ленинград Центр"
+            />
+            <img
+              class="header__logo header__logo--art"
+              src="assets/images/icons/art-masters.svg"
+              alt="Art Masters"
+            />
+          </div>
+          <button class="nav__close" type="button" aria-label="Закрыть"></button>
+        </div>
+        <div class="nav__photo">
+          <img src="assets/images/menu-burger.png" alt="" />
+        </div>
+        <nav class="nav__list">
+          <a class="nav__link" href="#about">О чем</a>
+          <a class="nav__link" href="#crew">Команда</a>
+          <a class="nav__link" href="#actors">Актеры</a>
+          <a class="nav__link" href="#rehearsal">Репетиция</a>
+          <a class="nav__link" href="#director">Слово режиссера</a>
+        </nav>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/sliders.js"></script>
+    <script src="js/lines.js"></script>
     <script src="js/hero.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

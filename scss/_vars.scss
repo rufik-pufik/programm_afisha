@@ -1,6 +1,14 @@
 $side: 20px;
+$section-gap: 80px;
+$slide-gap: 6px;
+$slide-main: 266px;
+$slide-h: 376px;
+$reh-small: 120px;
+$reh-small-h: 180px;
+$actor-small: 160px;
+$actor-small-h: 310px;
 
-$font-main: "Golos Text", Arial, sans-serif;
+$font-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 $color-text: #111111;
 $color-bg: #ffffff;
@@ -12,3 +20,6 @@ $color-white: #ffffff;
 $z-header: 50;
 $z-slider: 1;
 $z-dot: 2;
+$z-nav: 100;
+
+$color-nav: #1e1e1e;

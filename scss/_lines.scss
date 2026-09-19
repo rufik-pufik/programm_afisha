@@ -1,0 +1,31 @@
+.js-line::before,
+.js-line::after {
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+.js-line::before {
+  transform-origin: right center;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js-line::after {
+  transform-origin: left center;
+  transition: transform 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.12s;
+}
+
+.js-line > * {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.45s ease 0.08s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+}
+
+.js-line.is-on::before,
+.js-line.is-on::after {
+  transform: scaleX(1);
+}
+
+.js-line.is-on > * {
+  opacity: 1;
+  transform: translateX(0);
+}

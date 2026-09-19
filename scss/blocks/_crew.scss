@@ -1,26 +1,19 @@
 .crew {
-  padding-bottom: 48px;
+  padding-bottom: $section-gap;
 }
 
 .crew__line {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   padding-left: $side;
   padding-right: $side;
 }
 
-.crew__line::before {
-  content: "";
-  width: 32px;
-  height: 2px;
-  background: $color-red;
-  flex-shrink: 0;
-}
-
+.crew__line::before,
 .crew__line::after {
   content: "";
-  flex-grow: 1;
+  flex: 1;
   height: 2px;
   background: $color-red;
 }
@@ -36,9 +29,14 @@
 
 .crew__slider {
   overflow-x: auto;
-  overflow-y: hidden;
   scrollbar-width: none;
-  touch-action: pan-x;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  cursor: grab;
+}
+
+.crew__slider.is-drag {
+  cursor: grabbing;
 }
 
 .crew__slider::-webkit-scrollbar {
@@ -63,10 +61,11 @@
   aspect-ratio: 716 / 754;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
 
 .crew__meta {
-  padding: 16px 52px 0 48px;
+  padding: 14px 24px 0 48px;
 }
 
 .crew__name {

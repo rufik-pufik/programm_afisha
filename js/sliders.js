@@ -96,55 +96,159 @@ function initSliders() {
   });
 }
 
-function initRehearsal() {
-  const viewport = document.querySelector(".js-rehearsal");
-
-  if (!viewport) {
+function flipQueue(root, itemSel) {
+  if (!root) {
     return;
   }
 
-  const track = viewport.querySelector(".rehearsal__track");
+  const track = root.firstElementChild;
   let busy = false;
 
-  viewport.addEventListener("click", function (e) {
-    const nextCard = e.target.closest(".rehearsal__card.is-next");
+  root.addEventListener("click", function (e) {
+    const target = e.target.closest(itemSel);
 
-    if (!nextCard || busy) {
+    if (!target || target.classList.contains("is-main") || busy) {
       return;
     }
 
-    const mainCard = track.querySelector(".is-main");
-    const upcoming = track.querySelector(".rehearsal__card:not(.is-main):not(.is-next)");
+    const current = track.querySelector(".is-main");
 
-    busy = true;
-    mainCard.classList.remove("is-main");
-    nextCard.classList.remove("is-next");
-    nextCard.classList.add("is-main");
-
-    if (upcoming) {
-      upcoming.classList.add("is-next");
+    if (!current) {
+      return;
     }
 
-    let done = false;
+    const leaving = [];
+    let node = current;
 
-    function finish() {
-      if (done) {
+    while (node && node !== target) {
+      leaving.push(node);
+      node = node.nextElementSibling;
+    }
+
+    if (!node) {
+      return;
+    }
+
+    busy = true;
+    current.classList.remove("is-main");
+
+    leaving.forEach(function (el) {
+      el.classList.add("is-leave");
+    });
+
+    target.classList.add("is-main");
+
+    setTimeout(function () {
+      leaving.forEach(function (el) {
+        el.classList.remove("is-leave");
+        track.appendChild(el);
+      });
+      busy = false;
+    }, 560);
+  });
+}
+
+function initRehearsal() {
+  flipQueue(document.querySelector(".js-rehearsal"), ".rehearsal__card");
+}
+
+function initActors() {
+  flipQueue(document.querySelector(".js-actors"), ".actors__slide");
+}
+
+function initHScroll() {
+  const wraps = document.querySelectorAll(".js-hscroll");
+
+  wraps.forEach(function (wrap) {
+    let startX = 0;
+    let startY = 0;
+    let lock = "";
+    let mouseOn = false;
+    let mouseStart = 0;
+    let mouseLeft = 0;
+
+    wrap.addEventListener(
+      "touchstart",
+      function (e) {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        lock = "";
+        wrap.dragMoved = false;
+      },
+      { passive: true }
+    );
+
+    wrap.addEventListener(
+      "touchmove",
+      function (e) {
+        if (lock === "y") {
+          return;
+        }
+
+        const dx = Math.abs(e.touches[0].clientX - startX);
+        const dy = Math.abs(e.touches[0].clientY - startY);
+
+        if (dx < 8 && dy < 8) {
+          return;
+        }
+
+        lock = dy > dx ? "y" : "x";
+
+        if (lock === "y") {
+          wrap.style.overflowX = "hidden";
+        }
+
+        if (lock === "x") {
+          wrap.dragMoved = true;
+        }
+      },
+      { passive: true }
+    );
+
+    wrap.addEventListener("touchend", function () {
+      wrap.style.overflowX = "";
+      lock = "";
+    });
+
+    wrap.addEventListener("touchcancel", function () {
+      wrap.style.overflowX = "";
+      lock = "";
+    });
+
+    wrap.addEventListener("mousedown", function (e) {
+      if (e.button !== 0) {
         return;
       }
 
-      done = true;
-      nextCard.removeEventListener("transitionend", onEnd);
-      track.appendChild(mainCard);
-      busy = false;
-    }
+      mouseOn = true;
+      wrap.dragMoved = false;
+      mouseStart = e.clientX;
+      mouseLeft = wrap.scrollLeft;
+      wrap.classList.add("is-drag");
+      e.preventDefault();
+    });
 
-    function onEnd(event) {
-      if (event.propertyName === "width") {
-        finish();
+    window.addEventListener("mousemove", function (e) {
+      if (!mouseOn) {
+        return;
       }
-    }
 
-    nextCard.addEventListener("transitionend", onEnd);
-    setTimeout(finish, 500);
+      const dx = e.clientX - mouseStart;
+
+      if (Math.abs(dx) > 4) {
+        wrap.dragMoved = true;
+      }
+
+      wrap.scrollLeft = mouseLeft - dx;
+    });
+
+    window.addEventListener("mouseup", function () {
+      if (!mouseOn) {
+        return;
+      }
+
+      mouseOn = false;
+      wrap.classList.remove("is-drag");
+    });
   });
 }

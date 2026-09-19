@@ -1,18 +1,18 @@
 .rehearsal {
-  padding-bottom: 48px;
+  padding-bottom: $section-gap;
 }
 
 .rehearsal__line {
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   padding-left: $side;
   padding-right: $side;
 }
 
 .rehearsal__line::before {
   content: "";
-  width: 48px;
+  width: 32px;
   height: 2px;
   background: $color-red;
   flex-shrink: 0;
@@ -36,35 +36,63 @@
 
 .rehearsal__viewport {
   overflow: hidden;
+  height: $slide-h;
   padding-left: $side;
+  touch-action: pan-y;
 }
 
 .rehearsal__track {
   display: flex;
   align-items: flex-start;
+  gap: $slide-gap;
+  height: $slide-h;
+  width: max-content;
+  padding-right: $side;
 }
 
 .rehearsal__card {
-  width: 0;
   flex-shrink: 0;
   overflow: hidden;
-  transition: width 0.45s ease;
+  width: $reh-small;
+  height: $reh-small-h;
+  cursor: pointer;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
 }
 
 .rehearsal__card.is-main {
-  width: 265px;
+  width: $slide-main;
+  height: $slide-h;
+  cursor: default;
 }
 
-.rehearsal__card.is-next {
-  width: 99px;
-  margin-left: 6px;
-  cursor: pointer;
+.rehearsal__card.is-leave {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rehearsal__card.is-top {
+  align-self: flex-start;
+}
+
+.rehearsal__card.is-bot {
+  align-self: flex-end;
 }
 
 .rehearsal__card img {
   width: 100%;
-  aspect-ratio: 534 / 756;
+  height: 100%;
   object-fit: cover;
   display: block;
   pointer-events: none;
+}
+
+.rehearsal__card.is-top img {
+  object-position: top;
+}
+
+.rehearsal__card.is-bot img {
+  object-position: bottom;
 }
