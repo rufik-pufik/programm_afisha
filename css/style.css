@@ -439,10 +439,10 @@ textarea {
 }
 
 .intro__line-label {
-  padding: 0 10px;
-  font-size: 13px;
+  padding: 0 12px;
+  font-size: 15px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -555,7 +555,7 @@ textarea {
 
 .rehearsal__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -653,7 +653,7 @@ textarea {
 
 .crew__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -751,7 +751,7 @@ textarea {
 
 .actors__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -871,7 +871,7 @@ textarea {
 
 .director__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
