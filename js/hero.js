@@ -10,11 +10,10 @@ function initHeroDot() {
   function onScroll() {
     const top = hero.getBoundingClientRect().top;
     const total = hero.offsetHeight - window.innerHeight;
-    const fillSpeed = 2.5;
     let progress = 0;
 
     if (total > 0) {
-      progress = -top / total * fillSpeed;
+      progress = -top / total;
     }
 
     if (progress < 0) {
