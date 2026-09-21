@@ -395,7 +395,7 @@ textarea {
 
 .intro__big {
   font-size: clamp(24px, 8.5vw, 34px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -448,16 +448,17 @@ textarea {
 }
 
 .intro__text {
+  display: flex;
+  justify-content: flex-end;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.35;
-  padding-left: 27%;
-  padding-right: 20px;
+  padding-inline: 20px;
 }
 
 .facts {
   overflow-x: auto;
-  padding-bottom: 80px;
+  padding-bottom: 120px;
   scrollbar-width: none;
   touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
@@ -500,12 +501,18 @@ textarea {
 
 .facts__info {
   aspect-ratio: 534/492;
-  padding-top: 10px;
-  padding-left: 16%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.facts__list {
+  display: grid;
+  gap: 16px;
 }
 
 .facts__label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   color: #8d8d8d;
   text-transform: uppercase;
@@ -515,17 +522,12 @@ textarea {
 
 .facts__value {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
-  margin-bottom: 14px;
-}
-
-.facts__value:last-child {
-  margin-bottom: 0;
 }
 
 .rehearsal {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .rehearsal__line {
@@ -623,7 +625,7 @@ textarea {
 }
 
 .crew {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .crew__line {
@@ -714,7 +716,7 @@ textarea {
 }
 
 .actors {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .actors__line {
@@ -834,7 +836,7 @@ textarea {
 }
 
 .director {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .director__line {
@@ -881,7 +883,10 @@ textarea {
 }
 
 .director__meta {
-  padding: 14px 20px 0 20%;
+  padding: 16px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .director__name {
