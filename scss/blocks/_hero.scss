@@ -35,7 +35,7 @@
   background: $color-red;
   border-radius: 50%;
   z-index: $z-dot;
-  opacity: 1;
+  opacity: 0.5;
   transform: translate(-50%, -50%) scale(1);
   transform-origin: center center;
   pointer-events: none;
