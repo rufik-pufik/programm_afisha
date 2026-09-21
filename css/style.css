@@ -191,11 +191,10 @@ textarea {
   align-items: center;
   justify-content: space-between;
   background: #1e1e1e;
-  padding: 20px 20px;
+  padding: 16px 20px;
   flex-shrink: 0;
   position: relative;
   z-index: 50;
-  padding-top: 30px;
 }
 
 .header__logos {
@@ -367,7 +366,7 @@ textarea {
   background: #d10000;
   border-radius: 50%;
   z-index: 2;
-  opacity: 0.5;
+  opacity: 1;
   transform: translate(-50%, -50%) scale(1);
   transform-origin: center center;
   pointer-events: none;
@@ -745,6 +744,7 @@ textarea {
 
 .actors__slider {
   overflow: hidden;
+  height: 436px;
   touch-action: pan-y;
 }
 
@@ -801,15 +801,26 @@ textarea {
 }
 
 .actors__name {
-  margin-top: 10px;
+  margin-top: 14px;
+  margin-bottom: 6px;
   color: #111111;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   white-space: nowrap;
 }
 
-.actors__slide.is-leave .actors__name {
+.actors__text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #8d8d8d;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.actors__slide.is-leave .actors__name,
+.actors__slide.is-leave .actors__text {
   margin-top: 0;
   height: 0;
   overflow: hidden;
@@ -873,9 +884,15 @@ textarea {
   margin-bottom: 6px;
 }
 
-.director__text {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.35;
+.director__quote {
   color: #8d8d8d;
+}
+
+.director__quote p {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.director__quote p + p {
+  margin-top: 14px;
 }

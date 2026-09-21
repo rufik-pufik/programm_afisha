@@ -36,6 +36,7 @@
 
 .actors__slider {
   overflow: hidden;
+  height: $slide-h + 60px; // фрейм главной + имя и подпись: иначе высота скачет в переходе
   touch-action: pan-y;
 }
 
@@ -93,15 +94,26 @@
 }
 
 .actors__name {
-  margin-top: 10px;
+  margin-top: 14px;
+  margin-bottom: 6px;
   color: $color-text;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   white-space: nowrap;
 }
 
-.actors__slide.is-leave .actors__name {
+.actors__text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: $color-muted;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.actors__slide.is-leave .actors__name,
+.actors__slide.is-leave .actors__text {
   margin-top: 0;
   height: 0;
   overflow: hidden;
