@@ -102,11 +102,33 @@ function flipQueue(root, itemSel) {
   }
 
   const track = root.firstElementChild;
+
+  // очередь должна выходить за правый край: иначе клон, который goTo дописывает
+  // в хвост, рождается на виду. Дублируем набор, пока трек короче полутора экранов.
+  const originals = Array.prototype.slice.call(track.children);
+
+  for (let pass = 0; pass < 10; pass++) {
+    const wide = track.getBoundingClientRect().width >= root.clientWidth * 1.5;
+
+    // одной лишней копии хватает всегда; замер добирает, если вьюпорт шире.
+    // без проверки на количество слайдер с неготовым layout остался бы коротким
+    if (track.children.length >= originals.length * 2 && wide) {
+      break;
+    }
+
+    originals.forEach(function (el) {
+      const copy = el.cloneNode(true);
+      copy.classList.remove("is-main");
+      track.appendChild(copy);
+    });
+  }
+
+  const step = 50;
   let busy = false;
+  let dragX = 0;
+  let dragging = false;
 
-  root.addEventListener("click", function (e) {
-    const target = e.target.closest(itemSel);
-
+  function goTo(target) {
     if (!target || target.classList.contains("is-main") || busy) {
       return;
     }
@@ -133,6 +155,13 @@ function flipQueue(root, itemSel) {
     current.classList.remove("is-main");
 
     leaving.forEach(function (el) {
+      // копия сразу занимает место в хвосте, иначе справа дыра до конца анимации
+      const copy = el.cloneNode(true);
+      copy.classList.remove("is-main");
+      copy.classList.add("is-leave");
+      track.appendChild(copy);
+      void copy.offsetWidth; // reflow: зафиксировать нулевую ширину до раскрытия
+      copy.classList.remove("is-leave");
       el.classList.add("is-leave");
     });
 
@@ -140,11 +169,90 @@ function flipQueue(root, itemSel) {
 
     setTimeout(function () {
       leaving.forEach(function (el) {
-        el.classList.remove("is-leave");
-        track.appendChild(el);
+        el.remove();
       });
       busy = false;
     }, 560);
+  }
+
+  function goBack() {
+    const current = track.querySelector(".is-main");
+    const back = track.lastElementChild;
+
+    if (busy || !current || !back || back === current) {
+      return;
+    }
+
+    busy = true;
+    back.classList.add("is-leave");
+    track.insertBefore(back, current);
+    void back.offsetWidth; // reflow: зафиксировать нулевую ширину до анимации раскрытия
+    current.classList.remove("is-main");
+    back.classList.remove("is-leave");
+    back.classList.add("is-main");
+
+    setTimeout(function () {
+      busy = false;
+    }, 560);
+  }
+
+  root.addEventListener("pointerdown", function (e) {
+    if (e.button !== 0) {
+      return;
+    }
+
+    dragging = true;
+    dragX = e.clientX;
+    root.dragMoved = false;
+
+    if (e.pointerType === "mouse") {
+      e.preventDefault();
+    }
+  });
+
+  root.addEventListener("pointermove", function (e) {
+    if (!dragging) {
+      return;
+    }
+
+    // пока идёт анимация, жест не копим: иначе накопленный за 560мс путь
+    // перепрыгнет порог сразу после busy и переход сработает рывком
+    if (busy) {
+      dragX = e.clientX;
+      return;
+    }
+
+    const dx = e.clientX - dragX;
+
+    if (Math.abs(dx) < step) {
+      return;
+    }
+
+    dragX = e.clientX;
+    root.dragMoved = true;
+
+    if (dx < 0) {
+      const current = track.querySelector(".is-main");
+      goTo(current && current.nextElementSibling);
+    } else {
+      goBack();
+    }
+  });
+
+  function dragStop() {
+    dragging = false;
+  }
+
+  root.addEventListener("pointerup", dragStop);
+  root.addEventListener("pointercancel", dragStop);
+  root.addEventListener("pointerleave", dragStop);
+
+  root.addEventListener("click", function (e) {
+    if (root.dragMoved) {
+      return;
+    }
+
+    goTo(e.target.closest(itemSel));
   });
 }
 

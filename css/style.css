@@ -191,11 +191,10 @@ textarea {
   align-items: center;
   justify-content: space-between;
   background: #1e1e1e;
-  padding: 20px 20px;
+  padding: 16px 20px;
   flex-shrink: 0;
   position: relative;
   z-index: 50;
-  padding-top: 30px;
 }
 
 .header__logos {
@@ -332,7 +331,7 @@ textarea {
 }
 
 .hero {
-  height: 200vh;
+  height: 140vh;
 }
 
 .hero__pin {
@@ -396,7 +395,7 @@ textarea {
 
 .intro__big {
   font-size: clamp(24px, 8.5vw, 34px);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.03em;
   text-transform: uppercase;
@@ -440,25 +439,26 @@ textarea {
 }
 
 .intro__line-label {
-  padding: 0 10px;
-  font-size: 13px;
+  padding: 0 12px;
+  font-size: 15px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
 .intro__text {
+  display: flex;
+  justify-content: flex-end;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.35;
-  padding-left: 27%;
-  padding-right: 20px;
+  padding-inline: 20px;
 }
 
 .facts {
   overflow-x: auto;
-  padding-bottom: 80px;
+  padding-bottom: 120px;
   scrollbar-width: none;
   touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
@@ -501,12 +501,18 @@ textarea {
 
 .facts__info {
   aspect-ratio: 534/492;
-  padding-top: 10px;
-  padding-left: 16%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.facts__list {
+  display: grid;
+  gap: 16px;
 }
 
 .facts__label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   color: #8d8d8d;
   text-transform: uppercase;
@@ -516,17 +522,12 @@ textarea {
 
 .facts__value {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
-  margin-bottom: 14px;
-}
-
-.facts__value:last-child {
-  margin-bottom: 0;
 }
 
 .rehearsal {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .rehearsal__line {
@@ -554,7 +555,7 @@ textarea {
 
 .rehearsal__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -571,7 +572,6 @@ textarea {
 .rehearsal__track {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
   height: 376px;
   width: max-content;
   padding-right: 20px;
@@ -582,8 +582,9 @@ textarea {
   overflow: hidden;
   width: 120px;
   height: 180px;
+  margin-right: 6px;
   cursor: pointer;
-  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), height 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), height 0.55s cubic-bezier(0.22, 1, 0.36, 1), margin-right 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
 }
 
 .rehearsal__card.is-main {
@@ -595,6 +596,7 @@ textarea {
 .rehearsal__card.is-leave {
   width: 0;
   height: 0;
+  margin-right: 0;
   opacity: 0;
   pointer-events: none;
 }
@@ -624,7 +626,7 @@ textarea {
 }
 
 .crew {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .crew__line {
@@ -635,17 +637,24 @@ textarea {
   padding-right: 20px;
 }
 
-.crew__line::before,
+.crew__line::before {
+  content: "";
+  width: 32px;
+  height: 2px;
+  background: #d10000;
+  flex-shrink: 0;
+}
+
 .crew__line::after {
   content: "";
-  flex: 1;
+  flex-grow: 1;
   height: 2px;
   background: #d10000;
 }
 
 .crew__title {
-  padding: 0 10px;
-  font-size: 12px;
+  padding: 0 12px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -690,7 +699,14 @@ textarea {
 }
 
 .crew__meta {
-  padding: 14px 24px 0 48px;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.crew__group {
+  max-width: 270px;
 }
 
 .crew__name {
@@ -708,7 +724,7 @@ textarea {
 }
 
 .actors {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .actors__line {
@@ -736,7 +752,7 @@ textarea {
 
 .actors__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -745,13 +761,13 @@ textarea {
 
 .actors__slider {
   overflow: hidden;
+  height: 436px;
   touch-action: pan-y;
 }
 
 .actors__track {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
   padding-left: 20px;
   padding-right: 20px;
   width: max-content;
@@ -760,9 +776,10 @@ textarea {
 .actors__slide {
   width: 160px;
   flex-shrink: 0;
+  margin-right: 6px;
   cursor: pointer;
   overflow: hidden;
-  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), margin-right 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
 
 .actors__slide.is-main {
@@ -801,22 +818,33 @@ textarea {
 }
 
 .actors__name {
-  margin-top: 10px;
+  margin-top: 14px;
+  margin-bottom: 6px;
   color: #111111;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   white-space: nowrap;
 }
 
-.actors__slide.is-leave .actors__name {
+.actors__text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: #8d8d8d;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.actors__slide.is-leave .actors__name,
+.actors__slide.is-leave .actors__text {
   margin-top: 0;
   height: 0;
   overflow: hidden;
 }
 
 .director {
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 }
 
 .director__line {
@@ -844,7 +872,7 @@ textarea {
 
 .director__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -863,7 +891,10 @@ textarea {
 }
 
 .director__meta {
-  padding: 14px 20px 0 20%;
+  padding: 16px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .director__name {
@@ -873,9 +904,15 @@ textarea {
   margin-bottom: 6px;
 }
 
-.director__text {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.35;
+.director__quote {
   color: #8d8d8d;
+}
+
+.director__quote p {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.director__quote p + p {
+  margin-top: 14px;
 }

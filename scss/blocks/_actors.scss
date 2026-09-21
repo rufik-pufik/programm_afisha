@@ -27,7 +27,7 @@
 
 .actors__title {
   padding: 0 12px;
-  font-size: 13px;
+  font-size: $font-size-section-title;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -36,13 +36,13 @@
 
 .actors__slider {
   overflow: hidden;
+  height: $slide-h + 60px; // фрейм главной + имя и подпись: иначе высота скачет в переходе
   touch-action: pan-y;
 }
 
 .actors__track {
   display: flex;
   align-items: flex-start;
-  gap: $slide-gap;
   padding-left: $side;
   padding-right: $side;
   width: max-content;
@@ -51,10 +51,13 @@
 .actors__slide {
   width: $actor-small;
   flex-shrink: 0;
+  // промежуток держит margin, а не gap: gap не анимируется и даёт скачок
+  // при вставке клона и удалении оригинала в flipQueue
+  margin-right: $slide-gap;
   cursor: pointer;
   overflow: hidden;
   transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.45s ease;
+    margin-right 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
 
 .actors__slide.is-main {
@@ -93,15 +96,26 @@
 }
 
 .actors__name {
-  margin-top: 10px;
+  margin-top: 14px;
+  margin-bottom: 6px;
   color: $color-text;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   white-space: nowrap;
 }
 
-.actors__slide.is-leave .actors__name {
+.actors__text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: $color-muted;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.actors__slide.is-leave .actors__name,
+.actors__slide.is-leave .actors__text {
   margin-top: 0;
   height: 0;
   overflow: hidden;
