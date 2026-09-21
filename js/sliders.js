@@ -102,6 +102,27 @@ function flipQueue(root, itemSel) {
   }
 
   const track = root.firstElementChild;
+
+  // очередь должна выходить за правый край: иначе клон, который goTo дописывает
+  // в хвост, рождается на виду. Дублируем набор, пока трек короче полутора экранов.
+  const originals = Array.prototype.slice.call(track.children);
+
+  for (let pass = 0; pass < 10; pass++) {
+    const wide = track.getBoundingClientRect().width >= root.clientWidth * 1.5;
+
+    // одной лишней копии хватает всегда; замер добирает, если вьюпорт шире.
+    // без проверки на количество слайдер с неготовым layout остался бы коротким
+    if (track.children.length >= originals.length * 2 && wide) {
+      break;
+    }
+
+    originals.forEach(function (el) {
+      const copy = el.cloneNode(true);
+      copy.classList.remove("is-main");
+      track.appendChild(copy);
+    });
+  }
+
   const step = 50;
   let busy = false;
   let dragX = 0;
@@ -190,7 +211,14 @@ function flipQueue(root, itemSel) {
   });
 
   root.addEventListener("pointermove", function (e) {
-    if (!dragging || busy) {
+    if (!dragging) {
+      return;
+    }
+
+    // пока идёт анимация, жест не копим: иначе накопленный за 560мс путь
+    // перепрыгнет порог сразу после busy и переход сработает рывком
+    if (busy) {
+      dragX = e.clientX;
       return;
     }
 
