@@ -634,17 +634,24 @@ textarea {
   padding-right: 20px;
 }
 
-.crew__line::before,
+.crew__line::before {
+  content: "";
+  width: 32px;
+  height: 2px;
+  background: #d10000;
+  flex-shrink: 0;
+}
+
 .crew__line::after {
   content: "";
-  flex: 1;
+  flex-grow: 1;
   height: 2px;
   background: #d10000;
 }
 
 .crew__title {
-  padding: 0 10px;
-  font-size: 12px;
+  padding: 0 12px;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
