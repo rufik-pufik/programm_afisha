@@ -44,7 +44,6 @@
 .rehearsal__track {
   display: flex;
   align-items: flex-start;
-  gap: $slide-gap;
   height: $slide-h;
   width: max-content;
   padding-right: $side;
@@ -55,9 +54,13 @@
   overflow: hidden;
   width: $reh-small;
   height: $reh-small-h;
+  // промежуток держит margin, а не gap: gap не анимируется и даёт скачок
+  // при вставке клона и удалении оригинала в flipQueue
+  margin-right: $slide-gap;
   cursor: pointer;
   transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    height 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+    height 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    margin-right 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
 }
 
 .rehearsal__card.is-main {
@@ -69,6 +72,7 @@
 .rehearsal__card.is-leave {
   width: 0;
   height: 0;
+  margin-right: 0;
   opacity: 0;
   pointer-events: none;
 }

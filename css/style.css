@@ -572,7 +572,6 @@ textarea {
 .rehearsal__track {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
   height: 376px;
   width: max-content;
   padding-right: 20px;
@@ -583,8 +582,9 @@ textarea {
   overflow: hidden;
   width: 120px;
   height: 180px;
+  margin-right: 6px;
   cursor: pointer;
-  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), height 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), height 0.55s cubic-bezier(0.22, 1, 0.36, 1), margin-right 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
 }
 
 .rehearsal__card.is-main {
@@ -596,6 +596,7 @@ textarea {
 .rehearsal__card.is-leave {
   width: 0;
   height: 0;
+  margin-right: 0;
   opacity: 0;
   pointer-events: none;
 }
@@ -767,7 +768,6 @@ textarea {
 .actors__track {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
   padding-left: 20px;
   padding-right: 20px;
   width: max-content;
@@ -776,9 +776,10 @@ textarea {
 .actors__slide {
   width: 160px;
   flex-shrink: 0;
+  margin-right: 6px;
   cursor: pointer;
   overflow: hidden;
-  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1), margin-right 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
 
 .actors__slide.is-main {

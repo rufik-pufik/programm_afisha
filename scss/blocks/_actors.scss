@@ -43,7 +43,6 @@
 .actors__track {
   display: flex;
   align-items: flex-start;
-  gap: $slide-gap;
   padding-left: $side;
   padding-right: $side;
   width: max-content;
@@ -52,10 +51,13 @@
 .actors__slide {
   width: $actor-small;
   flex-shrink: 0;
+  // промежуток держит margin, а не gap: gap не анимируется и даёт скачок
+  // при вставке клона и удалении оригинала в flipQueue
+  margin-right: $slide-gap;
   cursor: pointer;
   overflow: hidden;
   transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.45s ease;
+    margin-right 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
 
 .actors__slide.is-main {
