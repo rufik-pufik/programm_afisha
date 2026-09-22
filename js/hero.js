@@ -28,7 +28,7 @@ function initHeroDot() {
     const w = photo.offsetWidth;
     const h = photo.offsetHeight;
     const x = w * 0.505;
-    const y = h * 0.45;
+    const y = h * 0.59;
     const maxDist = Math.max(
       Math.sqrt(x * x + y * y),
       Math.sqrt((w - x) * (w - x) + y * y),
