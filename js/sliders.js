@@ -108,11 +108,15 @@ function flipQueue(root, itemSel) {
   const originals = Array.prototype.slice.call(track.children);
 
   for (let pass = 0; pass < 10; pass++) {
-    const wide = track.getBoundingClientRect().width >= root.clientWidth * 1.5;
+    const viewport = root.clientWidth;
+    // при неготовом layout clientWidth отдаёт одни паддинги: замеру верить нельзя,
+    // тогда страхуемся лишней копией набора вместо сравнения ширин
+    const measurable = viewport > 100;
+    const enough = measurable
+      ? track.getBoundingClientRect().width >= viewport * 1.5
+      : track.children.length >= originals.length * 2;
 
-    // одной лишней копии хватает всегда; замер добирает, если вьюпорт шире.
-    // без проверки на количество слайдер с неготовым layout остался бы коротким
-    if (track.children.length >= originals.length * 2 && wide) {
+    if (enough) {
       break;
     }
 
