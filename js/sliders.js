@@ -96,23 +96,29 @@ function initSliders() {
   });
 }
 
-function flipQueue(root, itemSel) {
+function flipQueue(root, itemSel, loop) {
   if (!root) {
     return;
   }
 
   const track = root.firstElementChild;
+  const looped = loop !== false;
 
   // очередь должна выходить за правый край: иначе клон, который goTo дописывает
   // в хвост, рождается на виду. Дублируем набор, пока трек короче полутора экранов.
+  // без цикла хвоста не существует, дублировать нечего.
   const originals = Array.prototype.slice.call(track.children);
 
-  for (let pass = 0; pass < 10; pass++) {
-    const wide = track.getBoundingClientRect().width >= root.clientWidth * 1.5;
+  for (let pass = 0; looped && pass < 10; pass++) {
+    const viewport = root.clientWidth;
+    // при неготовом layout clientWidth отдаёт одни паддинги: замеру верить нельзя,
+    // тогда страхуемся лишней копией набора вместо сравнения ширин
+    const measurable = viewport > 100;
+    const enough = measurable
+      ? track.getBoundingClientRect().width >= viewport * 1.5
+      : track.children.length >= originals.length * 2;
 
-    // одной лишней копии хватает всегда; замер добирает, если вьюпорт шире.
-    // без проверки на количество слайдер с неготовым layout остался бы коротким
-    if (track.children.length >= originals.length * 2 && wide) {
+    if (enough) {
       break;
     }
 
@@ -155,31 +161,62 @@ function flipQueue(root, itemSel) {
     current.classList.remove("is-main");
 
     leaving.forEach(function (el) {
-      // копия сразу занимает место в хвосте, иначе справа дыра до конца анимации
-      const copy = el.cloneNode(true);
-      copy.classList.remove("is-main");
-      copy.classList.add("is-leave");
-      track.appendChild(copy);
-      void copy.offsetWidth; // reflow: зафиксировать нулевую ширину до раскрытия
-      copy.classList.remove("is-leave");
+      if (looped) {
+        // копия сразу занимает место в хвосте, иначе справа дыра до конца анимации
+        const copy = el.cloneNode(true);
+        copy.classList.remove("is-main");
+        copy.classList.add("is-leave");
+        track.appendChild(copy);
+        void copy.offsetWidth; // reflow: зафиксировать нулевую ширину до раскрытия
+        copy.classList.remove("is-leave");
+      }
+
       el.classList.add("is-leave");
     });
 
     target.classList.add("is-main");
 
     setTimeout(function () {
-      leaving.forEach(function (el) {
-        el.remove();
-      });
+      if (looped) {
+        leaving.forEach(function (el) {
+          el.remove();
+        });
+      }
+
       busy = false;
     }, 560);
   }
 
   function goBack() {
     const current = track.querySelector(".is-main");
+
+    if (busy || !current) {
+      return;
+    }
+
+    if (!looped) {
+      const prev = current.previousElementSibling;
+
+      // начало очереди: дальше назад некуда
+      if (!prev) {
+        return;
+      }
+
+      busy = true;
+      current.classList.remove("is-main");
+      prev.classList.remove("is-leave");
+      prev.classList.add("is-main");
+
+      setTimeout(function () {
+        busy = false;
+      }, 560);
+
+      return;
+    }
+
     const back = track.lastElementChild;
 
-    if (busy || !current || !back || back === current) {
+    if (!back || back === current) {
       return;
     }
 
@@ -261,7 +298,7 @@ function initRehearsal() {
 }
 
 function initActors() {
-  flipQueue(document.querySelector(".js-actors"), ".actors__slide");
+  flipQueue(document.querySelector(".js-actors"), ".actors__slide", false);
 }
 
 function initHScroll() {
